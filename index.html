@@ -1,14 +1,212 @@
-<!DOCTPYE>
-<html>
-  <head>
-    <meta lang="en"/>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abdulloh Muminov — Prodev Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5FA;--surface:#FFFFFF;--ink:#0E1B3D;--muted:#55627F;--line:#D5DBEA;
+  --accent:#2F5BFF;--accent-ink:#FFFFFF;--signal:#FFB703;
+  --display:"Unbounded","Arial Black",sans-serif;--body:"Manrope",system-ui,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1230;--surface:#121C42;--ink:#EEF2FF;--muted:#9BA8CC;--line:#243059;--accent:#6F8CFF;--accent-ink:#0A1230}}
+:root[data-theme="dark"]{--bg:#0A1230;--surface:#121C42;--ink:#EEF2FF;--muted:#9BA8CC;--line:#243059;--accent:#6F8CFF;--accent-ink:#0A1230}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:700 1rem var(--display);text-decoration:none;display:flex;align-items:center;gap:.6rem}
+.logo i{width:14px;height:14px;background:var(--signal);display:inline-block;border-radius:3px;animation:spin 6s linear infinite}
+nav{display:flex;gap:1.4rem;font-weight:500;font-size:.95rem}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+@media(max-width:640px){nav a:nth-child(-n+2){display:none}}
+
+/* hero */
+.hero{padding:clamp(3.5rem,10vw,7rem) 0 3rem}
+.hero p.lead{max-width:34rem;color:var(--muted);font-size:1.15rem;margin:1.6rem 0 2rem}
+h1{font:700 clamp(2.4rem,9vw,6.2rem)/1 var(--display);letter-spacing:-.03em;margin:0}
+h1 .row{display:block;overflow:hidden;padding-bottom:.08em}
+h1 .ch{display:inline-block;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*55ms)}
+h1 .row.b{color:var(--accent)}
+.tag{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);background:var(--surface);padding:.4rem .9rem;border-radius:99px;font-weight:700;font-size:.9rem;margin-bottom:1.6rem}
+.tag b{width:8px;height:8px;border-radius:50%;background:#22C55E;animation:pulse 1.8s infinite}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid var(--accent);transition:transform .2s,background .2s}
+.btn.p{background:var(--accent);color:var(--accent-ink)}
+.btn:hover{transform:translateY(-3px)}
+
+/* marquee */
+.marq{border-block:1px solid var(--line);overflow:hidden;background:var(--surface);margin:2rem 0 0}
+.track{display:flex;width:max-content;animation:slide 28s linear infinite}
+.track span{font:500 1.1rem var(--display);padding:1.1rem 2rem;white-space:nowrap}
+.track span::after{content:"";display:inline-block;width:10px;height:10px;background:var(--signal);margin-left:4rem;transform:rotate(45deg)}
+.marq:hover .track{animation-play-state:paused}
+
+section{padding:clamp(3.5rem,8vw,6rem) 0}
+h2{font:700 clamp(1.6rem,4vw,2.6rem)/1.15 var(--display);letter-spacing:-.02em;margin:0 0 2.5rem;max-width:20ch}
+.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.75rem;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.card h3{font:700 1.1rem var(--display);margin:1rem 0 .5rem}
+.card p{margin:0;color:var(--muted)}
+.ic{width:46px;height:46px;border-radius:12px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:1.4rem}
+
+/* projects */
+.proj{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.pj{border-radius:18px;padding:2rem;min-height:240px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;color:#fff;transition:transform .3s}
+.pj:hover{transform:scale(1.02)}
+.pj::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.25),transparent 45%)}
+.pj:nth-child(1){background:#2F5BFF}.pj:nth-child(2){background:#0E1B3D;border:1px solid var(--line)}.pj:nth-child(3){background:#C77D00}
+.pj h3{font:700 1.3rem var(--display);margin:0 0 .4rem;position:relative}
+.pj p{margin:0;position:relative;opacity:.92}
+.pj small{position:relative;font-weight:700;margin-bottom:.6rem;opacity:.85}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;background:var(--ink);color:var(--bg);border-radius:22px;padding:2.5rem}
+.stats div{text-align:left}
+.stats b{display:block;font:700 clamp(2rem,5vw,3rem) var(--display);color:var(--signal)}
+.stats span{opacity:.85}
+.about{display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:start;margin-bottom:3rem}
+.about p{margin:0 0 1rem;color:var(--muted);max-width:60ch}
+
+/* contact */
+.contact{text-align:center}
+.contact h2{margin-inline:auto;max-width:18ch}
+.contact .btns{justify-content:center}
+footer{border-top:1px solid var(--line);padding:1.5rem 0;color:var(--muted);font-size:.9rem;text-align:center}
+
+/* scroll reveal: single, light */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv.on{opacity:1;transform:none}
+
+@keyframes rise{to{transform:none}}
+@keyframes slide{to{transform:translateX(-50%)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}70%,100%{box-shadow:0 0 0 9px rgba(34,197,94,0)}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  h1 .ch{transform:none}.rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top"><i></i>Prodev Business</a>
     <nav>
-      <h2>Pro<b>Dev</b></h2>
-      <a href="#">Bosh Sahifa</a>
-      <a href="#">Men Haqimda</a>
-      <a href="#">Sayt Haqida</a>
+      <a href="#xizmatlar">Xizmatlar</a>
+      <a href="#loyihalar">Loyihalar</a>
+      <a href="#haqida">Men haqimda</a>
+      <a href="#aloqa">Aloqa</a>
     </nav>
-  </body>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="tag"><b></b>Yangi loyihalar uchun ochiqman</div>
+    <h1 aria-label="Abdulloh Muminov">
+      <span class="row" data-t="Abdulloh"></span>
+      <span class="row b" data-t="Muminov"></span>
+    </h1>
+    <p class="lead">Prodev Business asoschisi. Biznesingiz uchun zamonaviy veb-saytlar, avtomatlashtirish va raqamli yechimlar yarataman.</p>
+    <div class="btns">
+      <a class="btn p" href="#loyihalar">Loyihalarni ko‘rish</a>
+      <a class="btn" href="#aloqa">Bog‘lanish</a>
+    </div>
+  </div>
+  <div class="marq" aria-hidden="true">
+    <div class="track" id="track"></div>
+  </div>
+
+  <section id="xizmatlar">
+    <div class="wrap">
+      <h2 class="rv">Biznesingiz o‘sishi uchun nima qilaman</h2>
+      <div class="grid rv">
+        <div class="card"><div class="ic">◐</div><h3>Veb-saytlar</h3><p>Tez, mobil qurilmalarga mos va mijoz jalb qiladigan saytlar.</p></div>
+        <div class="card"><div class="ic">⚙</div><h3>Avtomatlashtirish</h3><p>Takroriy ishlarni botlar va tizimlar bilan vaqtingizni tejaydigan qilish.</p></div>
+        <div class="card"><div class="ic">✦</div><h3>Brend va dizayn</h3><p>Logotip, ranglar va tartibli uslub: brendingiz bir ovozda gapirsin.</p></div>
+        <div class="card"><div class="ic">↗</div><h3>Biznes maslahat</h3><p>Raqamli strategiya va mahsulotni bozorga olib chiqish bo‘yicha yo‘l xaritasi.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="loyihalar">
+    <div class="wrap">
+      <h2 class="rv">Tanlangan loyihalar</h2>
+      <div class="proj rv">
+        <article class="pj"><small>Veb-sayt</small><h3>Onlayn do‘kon</h3><p>Buyurtma va to‘lov tizimi bilan to‘liq savdo platformasi.</p></article>
+        <article class="pj"><small>Telegram bot</small><h3>Buyurtma boti</h3><p>Mijozlar so‘rovlarini avtomatik qabul qiladigan yordamchi.</p></article>
+        <article class="pj"><small>Brend</small><h3>Korporativ uslub</h3><p>Kompaniya uchun logotip, ranglar va taqdimot to‘plami.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="haqida">
+    <div class="wrap">
+      <div class="about rv">
+        <h2 style="margin:0">Men haqimda</h2>
+        <div>
+          <p>Men Abdulloh Muminov, Prodev Business asoschisiman. Maqsadim: kichik va o‘rta bizneslarga qimmat agentliklarsiz professional raqamli mavjudlik berish.</p>
+          <p>Har bir loyihani oddiy tartibda olib boraman: maqsadni aniqlash, tez prototip, sinov va ishga tushirish.</p>
+        </div>
+      </div>
+      <div class="stats rv">
+        <div><b data-n="50" data-s="+">0</b><span>bajarilgan loyiha</span></div>
+        <div><b data-n="30" data-s="+">0</b><span>mamnun mijoz</span></div>
+        <div><b data-n="5" data-s="">0</b><span>yillik tajriba</span></div>
+        <div><b data-n="24" data-s="/7">0</b><span>aloqada</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="aloqa" class="contact">
+    <div class="wrap rv">
+      <h2>Keling, loyihangizni boshlaymiz</h2>
+      <div class="btns">
+        <a class="btn p" href="mailto:hello@prodev.uz">Email yozish</a>
+        <a class="btn" href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 Abdulloh Muminov · Prodev Business</div></footer>
+
+<script>
+// Hero: har bir harf pastdan ko‘tariladi
+let k=0;
+document.querySelectorAll('h1 .row').forEach(function(r){
+  r.dataset.t.split('').forEach(function(c){
+    var s=document.createElement('span');s.className='ch';s.setAttribute('aria-hidden','true');
+    s.style.setProperty('--i',k++);s.textContent=c;r.appendChild(s);
+  });
+});
+// Marquee
+var words=['Veb-saytlar','Avtomatlashtirish','Brending','Telegram botlar','Biznes strategiya','UI dizayn'];
+var t=document.getElementById('track');
+t.innerHTML=words.concat(words).concat(words).concat(words).map(function(w){return '<span>'+w+'</span>'}).join('');
+// Reveal + counters
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(!e.isIntersecting)return;
+    e.target.classList.add('on');
+    e.target.querySelectorAll('[data-n]').forEach(function(el){
+      var n=+el.dataset.n,s=el.dataset.s,st=performance.now();
+      (function f(now){var p=Math.min((now-st)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+s;if(p<1)requestAnimationFrame(f)})(st);
+    });
+    io.unobserve(e.target);
+  });
+},{threshold:.2});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+</script>
+</body>
 </html>
